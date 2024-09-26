@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Craftera_MVC.props" />
+</Project>

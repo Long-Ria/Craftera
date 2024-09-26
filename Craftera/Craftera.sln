@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Craftera_MVC", "Craftera_MVC\Craftera_MVC.csproj", "{CF1C8DF0-F39A-4641-BE1E-443F3B493485}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF1C8DF0-F39A-4641-BE1E-443F3B493485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF1C8DF0-F39A-4641-BE1E-443F3B493485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF1C8DF0-F39A-4641-BE1E-443F3B493485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF1C8DF0-F39A-4641-BE1E-443F3B493485}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31141067-149A-4195-99F9-B121DF6D436C}
+	EndGlobalSection
+EndGlobal
