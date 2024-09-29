@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wGkDevTA22b+pq3ETqupAZ/ajytUyAlJ/UXCO4HMyuVo/skgY4WdJDgmEG+sypFngwALOiziVtsciG7INhU0NA==",
+  "dgSpecHash": "eBmm8+09/y1C8TNMaQHo4jzQo2QS0tv90Ywvt0KtXyfG5pJ5uII682m+dElpuWjrjgxoPeCZtAl/t3FVbxKbvQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\BackUp\\BackUp.csproj",
+  "projectFilePath": "D:\\EXE\\Craftera\\BackUp\\BackUp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

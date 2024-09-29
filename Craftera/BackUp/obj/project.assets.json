@@ -11244,11 +11244,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\BackUp\\BackUp.csproj",
+      "projectUniqueName": "D:\\EXE\\Craftera\\BackUp\\BackUp.csproj",
       "projectName": "BackUp",
-      "projectPath": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\BackUp\\BackUp.csproj",
+      "projectPath": "D:\\EXE\\Craftera\\BackUp\\BackUp.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\BackUp\\obj\\",
+      "outputPath": "D:\\EXE\\Craftera\\BackUp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

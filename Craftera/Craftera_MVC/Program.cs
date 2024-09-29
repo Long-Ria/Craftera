@@ -1,4 +1,5 @@
 using Craftera_MVC.Models;
+using Craftera_MVC.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Craftera_MVC
@@ -15,6 +16,9 @@ namespace Craftera_MVC
             builder.Services.AddDbContext<EXE202_CrafteraContext>(options => options.UseSqlServer(
             builder.Configuration.GetConnectionString("DefaultConnection")
             ));
+
+            builder.Services.AddSingleton<IVnPayService, VnPayService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
