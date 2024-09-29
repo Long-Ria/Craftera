@@ -32,7 +32,6 @@ namespace Craftera_MVC.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
             if (!optionsBuilder.IsConfigured)
             {
                 var conf = new ConfigurationBuilder()
@@ -62,19 +61,15 @@ namespace Craftera_MVC.Models
 
             modelBuilder.Entity<Item>(entity =>
             {
-                entity.HasNoKey();
-
-                entity.Property(e => e.ItemId).ValueGeneratedOnAdd();
-
                 entity.Property(e => e.Price).HasColumnType("money");
 
                 entity.HasOne(d => d.Cart)
-                    .WithMany()
+                    .WithMany(p => p.Items)
                     .HasForeignKey(d => d.CartId)
                     .HasConstraintName("FK_Items_Carts");
 
                 entity.HasOne(d => d.ProductDetail)
-                    .WithMany()
+                    .WithMany(p => p.Items)
                     .HasForeignKey(d => new { d.ProductId, d.SizeId, d.MaterialId })
                     .HasConstraintName("FK_Items_ProductDetails");
             });

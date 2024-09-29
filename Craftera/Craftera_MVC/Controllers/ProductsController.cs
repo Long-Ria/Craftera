@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Craftera_MVC.Models;
+using Craftera_MVC.ViewModels;
 
 namespace Craftera_MVC.Controllers
 {
@@ -19,149 +20,89 @@ namespace Craftera_MVC.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
-        {
-            var eXE202_CrafteraContext = _context.Products.Include(p => p.Category);
-            return View(await eXE202_CrafteraContext.ToListAsync());
-        }
-
-        // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Products == null)
-            {
-                return NotFound();
-            }
+            var productDetails = _context.ProductDetails
+                .Include(pd => pd.Size)
+                .Include(pd => pd.Material)
+                .Include(pd => pd.Product)
+                .Where(pd => pd.ProductId == id)
+                .ToList();
 
-            var product = await _context.Products
-                .Include(p => p.Category)
-                .FirstOrDefaultAsync(m => m.ProductId == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            return View(product);
-        }
-
-        // GET: Products/Create
-        public IActionResult Create()
-        {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId");
-            return View();
-        }
-
-        // POST: Products/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductName,ProductDescription,ProductImage,CategoryId")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", product.CategoryId);
-            return View(product);
-        }
-
-        // GET: Products/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Products == null)
-            {
-                return NotFound();
-            }
-
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", product.CategoryId);
-            return View(product);
-        }
-
-        // POST: Products/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,ProductDescription,ProductImage,CategoryId")] Product product)
-        {
-            if (id != product.ProductId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductExists(product.ProductId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", product.CategoryId);
-            return View(product);
-        }
-
-        // GET: Products/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Products == null)
-            {
-                return NotFound();
-            }
-
-            var product = await _context.Products
-                .Include(p => p.Category)
-                .FirstOrDefaultAsync(m => m.ProductId == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            return View(product);
-        }
-
-        // POST: Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Products == null)
-            {
-                return Problem("Entity set 'EXE202_CrafteraContext.Products'  is null.");
-            }
-            var product = await _context.Products.FindAsync(id);
-            if (product != null)
-            {
-                _context.Products.Remove(product);
-            }
+            var categories = _context.Categories.ToList();
             
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var sizes = productDetails.Select(pd => new
+            {
+                SizeId = pd.Size.SizeId,
+                SizeName = pd.Size.SizeName,
+
+            }).Distinct().ToList();
+            var materials = productDetails.Select(pd => new
+            {
+                MaterialId = pd.Material.MaterialId,
+                MaterialName = pd.Material.MaterialName,
+            }).Distinct().ToList();
+
+            ProductViewModel model = new ProductViewModel()
+            {
+                Product = productDetails.First().Product,
+                ProductDetails = productDetails,
+                Categories = categories,
+            };
+            ViewBag.Sizes = sizes;
+            ViewBag.Materials = materials;
+            return View(model);
         }
 
-        private bool ProductExists(int id)
+        public async Task<IActionResult> List()
         {
-          return (_context.Products?.Any(e => e.ProductId == id)).GetValueOrDefault();
+            var products = await _context.Products.Include(p => p.ProductDetails).Include(p => p.Category).ToListAsync();
+            var categories = _context.Categories.ToList();
+            ProductListModel model = new ProductListModel()
+            {
+                Products = products,
+                Categories = categories
+            };
+            return View(model);
         }
+
+
+        
+
+        [HttpPost]
+        public async Task<IActionResult> FilterProduct(string? search, List<int>? categoryId, int sortType)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                search = "";
+            }
+            List<Product> products = _context.Products.Include(p => p.ProductDetails)
+                .Where(p => categoryId == null || categoryId.Count <= 0 || categoryId.Contains((int)p.CategoryId))
+                .Where(p => p.ProductName.Contains(search))
+                .ToList();
+
+            if (sortType == 0)
+            {
+                products = products.OrderBy(p => p.ProductName.ToLower()).ToList();
+            }
+            else
+            {
+                products = products.OrderByDescending(p => p.ProductName.ToLower()).ToList();
+            }
+
+            return Json(new { success = true, data = products});
+
+        }
+
+
     }
+        
+
+        
+
+        
+
+        
+
+        
 }

@@ -34,7 +34,7 @@ namespace Craftera_MVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Products}/{action=List}/{id?}");
 
             app.Run();
         }

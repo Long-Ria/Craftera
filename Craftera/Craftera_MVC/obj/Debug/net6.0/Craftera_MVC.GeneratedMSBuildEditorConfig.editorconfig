@@ -16,24 +16,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/ADMIN/Desktop/EXE_Craftera/Craftera/Craftera/Craftera_MVC/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[C:/Users/ADMIN/Desktop/EXE_Craftera/Craftera/Craftera/Craftera_MVC/Views/Carts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/Desktop/EXE_Craftera/Craftera/Craftera/Craftera_MVC/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ADMIN/Desktop/EXE_Craftera/Craftera/Craftera/Craftera_MVC/Views/Products/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcSW5kZXguY3NodG1s
+[C:/Users/ADMIN/Desktop/EXE_Craftera/Craftera/Craftera/Craftera_MVC/Views/Products/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ADMIN/Desktop/EXE_Craftera/Craftera/Craftera/Craftera_MVC/Views/Products/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcTGlzdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ADMIN/Desktop/EXE_Craftera/Craftera/Craftera/Craftera_MVC/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ADMIN/Desktop/EXE_Craftera/Craftera/Craftera/Craftera_MVC/Views/Shared/_ValidationScriptsPartial.cshtml]
