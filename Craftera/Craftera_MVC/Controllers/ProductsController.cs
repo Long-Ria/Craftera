@@ -70,27 +70,37 @@ namespace Craftera_MVC.Controllers
         
 
         [HttpPost]
-        public async Task<IActionResult> FilterProduct(string? search, List<int>? categoryId, int sortType)
+        public async Task<IActionResult> FilterProduct(string? search, List<int>? categoryId, int? sortType)
         {
             if (string.IsNullOrEmpty(search))
             {
                 search = "";
             }
-            List<Product> products = _context.Products.Include(p => p.ProductDetails)
-                .Where(p => categoryId == null || categoryId.Count <= 0 || categoryId.Contains((int)p.CategoryId))
+            
+            List<Product> products = _context.Products
+                .Include(p => p.ProductDetails)
+                .Where(p => categoryId == null || categoryId.Contains(0) || categoryId.Contains((int)p.CategoryId))
                 .Where(p => p.ProductName.Contains(search))
+                .Where(p => p.ProductDetails.Count > 0)
                 .ToList();
-
+            
             if (sortType == 0)
             {
-                products = products.OrderBy(p => p.ProductName.ToLower()).ToList();
+                products = products.OrderBy(p => p.ProductDetails.First().Price).ToList();
             }
             else
             {
-                products = products.OrderByDescending(p => p.ProductName.ToLower()).ToList();
+                products = products.OrderByDescending(p => p.ProductDetails.First().Price).ToList();
             }
+            var data = products.Select(p => new
+            {
+                ProductName = p.ProductName,
+                ProductImage = p.ProductImage,
+                ProductPrice = p.ProductDetails.First().Price,
+                ProductId = p.ProductId,
+            }).ToList();
 
-            return Json(new { success = true, data = products});
+            return Json(new { success = true, data = data});
 
         }
 
