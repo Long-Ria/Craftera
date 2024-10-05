@@ -5,8 +5,6 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Craftera_MVC", "Craftera_MVC\Craftera_MVC.csproj", "{CF1C8DF0-F39A-4641-BE1E-443F3B493485}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Craftera_MVC1", "Craftera_MVC1\Craftera_MVC1.csproj", "{56B445F8-7EF0-4055-98D6-A0998208C4DF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{CF1C8DF0-F39A-4641-BE1E-443F3B493485}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF1C8DF0-F39A-4641-BE1E-443F3B493485}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF1C8DF0-F39A-4641-BE1E-443F3B493485}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56B445F8-7EF0-4055-98D6-A0998208C4DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56B445F8-7EF0-4055-98D6-A0998208C4DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56B445F8-7EF0-4055-98D6-A0998208C4DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56B445F8-7EF0-4055-98D6-A0998208C4DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
