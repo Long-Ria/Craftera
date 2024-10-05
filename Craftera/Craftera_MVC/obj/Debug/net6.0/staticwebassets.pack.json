@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Craftera_MVC.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\wwwroot\\css\\account.css",
+      "PackagePath": "staticwebassets\\css\\account.css"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

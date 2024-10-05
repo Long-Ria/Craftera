@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JyHijVsq9Uj0Fder8yWRDJQoNVD8X71bSlajCH9kDUU=",
+  "Hash": "iiuft5xXWmO7j3GIV66rGUBg9AXDu2n+ykt1WaqeECs=",
   "Source": "Craftera_MVC",
   "BasePath": "_content/Craftera_MVC",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Craftera_MVC.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\wwwroot\\css\\account.css",
+      "SourceId": "Craftera_MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\wwwroot\\",
+      "BasePath": "_content/Craftera_MVC",
+      "RelativePath": "css/account.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\account.css"
     },
     {
       "Identity": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\wwwroot\\css\\site.css",
