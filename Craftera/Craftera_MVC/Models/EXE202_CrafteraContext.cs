@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Craftera_MVC.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -187,7 +188,9 @@ namespace Craftera_MVC.Models
 
             modelBuilder.Entity<UserDetail>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.UserId);
+
+                entity.Property(e => e.UserId).ValueGeneratedNever();
 
                 entity.Property(e => e.Avatar).IsUnicode(false);
 
@@ -198,8 +201,9 @@ namespace Craftera_MVC.Models
                 entity.Property(e => e.PhoneNumber).HasMaxLength(20);
 
                 entity.HasOne(d => d.User)
-                    .WithMany()
-                    .HasForeignKey(d => d.UserId)
+                    .WithOne(p => p.UserDetail)
+                    .HasForeignKey<UserDetail>(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_UserDetails_Users");
             });
 

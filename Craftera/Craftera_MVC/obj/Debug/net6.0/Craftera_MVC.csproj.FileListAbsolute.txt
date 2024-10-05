@@ -1,11 +1,3 @@
-C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.csproj.AssemblyReference.cache
-C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.AssemblyInfoInputs.cache
-C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.AssemblyInfo.cs
-C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.csproj.CoreCompileInputs.cache
-C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.RazorAssemblyInfo.cache
-C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.RazorAssemblyInfo.cs
 C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\bin\Debug\net6.0\appsettings.json
 C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\bin\Debug\net6.0\Craftera_MVC.staticwebassets.runtime.json
@@ -257,6 +249,14 @@ C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\bin\Debug\net
 C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.AssemblyInfo.cs
+C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.RazorAssemblyInfo.cache
+C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\Craftera_MVC.RazorAssemblyInfo.cs
 C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\staticwebassets\msbuild.Craftera_MVC.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\staticwebassets\msbuild.build.Craftera_MVC.props
 C:\Users\ADMIN\Desktop\EXE_Craftera\Craftera\Craftera\Craftera_MVC\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Craftera_MVC.props

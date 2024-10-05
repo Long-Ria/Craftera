@@ -1,0 +1,34 @@
+﻿@model IEnumerable<dynamic>
+
+<h2>My Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Accepted Date</th>
+            <th>Delivery Date</th>
+            <th>Received Date</th>
+            <th>Status</th>
+            <th>Total Money</th>
+            <th>Payment</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
+                <td>@order.AcceptedDate?.ToString("yyyy-MM-dd")</td>
+                <td>@order.DeliveryDate?.ToString("yyyy-MM-dd")</td>
+                <td>@order.ReceivedDate?.ToString("yyyy-MM-dd")</td>
+                <td>@order.Status</td>
+                <td>@order.TotalMoney</td>
+                <td>@order.PaymentName</td>
+            </tr>
+        }
+    </tbody>
+</table>
