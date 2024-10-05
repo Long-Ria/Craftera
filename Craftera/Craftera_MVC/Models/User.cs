@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Craftera_MVC.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Craftera_MVC.Models
@@ -17,6 +18,7 @@ namespace Craftera_MVC.Models
         public int? RoleId { get; set; }
 
         public virtual Role? Role { get; set; }
+        public virtual UserDetail? UserDetail { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }

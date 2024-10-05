@@ -1,0 +1,62 @@
+﻿@model Craftera_MVC.Models.UserDetail
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h5>Profile Details</h5>
+        </div>
+        <div class="card-body">
+            <form asp-action="UpdateProfile" enctype="multipart/form-data" method="post">
+                <div class="mb-3">
+                    <label class="form-label">User ID</label>
+                    <input type="text" class="form-control" value="@Model.UserId" disabled />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" asp-for="FullName" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" asp-for="Email" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" asp-for="PhoneNumber" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Gender</label>
+                    <select class="form-select" asp-for="Gender">
+                        
+                        <option value="true">Nam</option>
+                        <option value="false">Nữ</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Avatar</label>
+                    <input type="file" class="form-control" name="Avatar" accept="image/*" />
+                    <div class="d-flex justify-content-center mt-2">
+                        @if (!string.IsNullOrEmpty(Model.Avatar))
+                        {
+                            <img src="@Url.Content("~/Contents/UserAvatar/" + Model.Avatar)" alt="Avatar" class="img-fluid rounded-circle" style="width: 100px; height: 100px;" />
+                        }
+                        else
+                        {
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Default Avatar" class="img-fluid rounded-circle" style="width: 100px; height: 100px;" />
+                        }
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Update Profile</button>
+                <a asp-controller="Products" asp-action="List" class="btn btn-primary">Return Home</a>
+            </form>
+            
+
+
+        </div>
+    </div>
+</div>

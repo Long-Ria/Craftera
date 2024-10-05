@@ -17,7 +17,16 @@ namespace Craftera_MVC
             builder.Configuration.GetConnectionString("DefaultConnection")
             ));
 
+<<<<<<< HEAD
             builder.Services.AddSingleton<IVnPayService, VnPayService>();
+=======
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+>>>>>>> a4fe98d255187c2ae1fbdd3555cdbb3fb6402394
 
             var app = builder.Build();
 
@@ -33,7 +42,7 @@ namespace Craftera_MVC
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.MapControllerRoute(
