@@ -10818,11 +10818,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj",
+      "projectUniqueName": "D:\\EXE\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj",
       "projectName": "Craftera_MVC",
-      "projectPath": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj",
+      "projectPath": "D:\\EXE\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\obj\\",
+      "outputPath": "D:\\EXE\\Craftera\\Craftera\\Craftera_MVC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
