@@ -70,36 +70,45 @@
                         </tr>
                     </thead>
                     <tbody class="align-middle">
-                        @foreach (ProductDetail pd in itemsInfo)
+                        @if (itemsInfo != null)
+                        {
+                            @foreach (ProductDetail pd in itemsInfo)
+                            {
+                                <tr>
+                                    <td class="align-middle">
+                                        <img src="@pd.Product.ProductImage" alt="" style="width: 50px;"> @pd.Product.ProductName
+                                    </td>
+                                    <td class="align-middle">@pd.Material.MaterialName</td>
+                                    <td class="align-middle">@pd.Size.SizeName</td>
+                                    <td class="align-middle">@pd.Price</td>
+
+                                    <!-- Quantity Update Form Start -->
+                                    <td class="align-middle">
+                                        <form method="post" action="@Url.Action("UpdateQuantity", "Carts")">
+                                            <div class="input-group quantity mx-auto" style="width: 100px;">
+                                                <input type="hidden" name="productDetailId" value="" />
+                                                <input type="number" name="quantity" class="form-control form-control-sm bg-secondary text-center" value="@items.Where(i => i.ProductDetail == pd).FirstOrDefault().Quantity" min="1" onchange="this.form.submit()" />
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <!-- Quantity Update Form End -->
+                                    <!-- Total Price Calculation -->
+                                    <td class="align-middle">
+                                        @items.Where(i => i.ProductDetail == pd).FirstOrDefault().Quantity * @pd.Price
+                                    </td>
+
+                                    <td class="align-middle">
+                                        <button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button>
+                                    </td>
+                                </tr>
+                            }
+                        } else
                         {
                             <tr>
-                                <td class="align-middle">
-                                    <img src="@pd.Product.ProductImage" alt="" style="width: 50px;"> @pd.Product.ProductName
-                                </td>
-                                <td class="align-middle">@pd.Material.MaterialName</td>
-                                <td class="align-middle">@pd.Size.SizeName</td>
-                                <td class="align-middle">@pd.Price</td>
-
-                                <!-- Quantity Update Form Start -->
-                                <td class="align-middle">
-                                    <form method="post" action="@Url.Action("UpdateQuantity", "Carts")">
-                                        <div class="input-group quantity mx-auto" style="width: 100px;">
-                                            <input type="hidden" name="productDetailId" value="" />
-                                            <input type="number" name="quantity" class="form-control form-control-sm bg-secondary text-center" value="@items.Where(i => i.ProductDetail == pd).FirstOrDefault().Quantity" min="1" onchange="this.form.submit()" />
-                                        </div>
-                                    </form>
-                                </td>
-                                <!-- Quantity Update Form End -->
-                                <!-- Total Price Calculation -->
-                                <td class="align-middle">
-                                    @items.Where(i => i.ProductDetail == pd).FirstOrDefault().Quantity * @pd.Price
-                                </td>
-
-                                <td class="align-middle">
-                                    <button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button>
-                                </td>
+                                <td><h6>No item in carts</h6></td>
                             </tr>
                         }
+
                     </tbody>
                 </table>
             </div>

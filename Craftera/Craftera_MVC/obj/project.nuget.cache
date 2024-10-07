@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fTmfL6/go+8Gk5C9C6WD2AM5cKb4Q2oPSzA+rTyQikC0y0O5wymFZzfrieiq8qGRppi3u6KHAPwdrnSaneFOZQ==",
+  "dgSpecHash": "OyV5HGfIHJyiuHPmjKtYWmIHcCTtvqpW8Rm7G9iaZa9qKFWiAfGUIArcKgFZP6quv4wiYm493Y8pGCGhSwrRMQ==",
   "success": true,
-  "projectFilePath": "D:\\EXE\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj",
+  "projectFilePath": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

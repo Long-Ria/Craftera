@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\EXE\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj": {}
+    "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj": {}
   },
   "projects": {
-    "D:\\EXE\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj": {
+    "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\EXE\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj",
         "projectName": "Craftera_MVC",
-        "projectPath": "D:\\EXE\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\Craftera_MVC.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\EXE\\Craftera\\Craftera\\Craftera_MVC\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\Desktop\\EXE_Craftera\\Craftera\\Craftera\\Craftera_MVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

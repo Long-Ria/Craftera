@@ -126,6 +126,16 @@ namespace Craftera_MVC.Controllers
             }
 
             Cart cart = _context.Carts.Include(c => c.Items).ThenInclude(i => i.ProductDetail).FirstOrDefault(c => c.UserId == userId);
+            if(cart == null) {
+                CartViewModelClass cartViewModelClass1 = new CartViewModelClass()
+                {
+                    Cart = new Cart(),
+                    Items = new List<Item>(),
+                    ItemsInfo = new List<ProductDetail>()
+                };
+                return View(cartViewModelClass1);
+
+            }
             List<Item> items = cart.Items.ToList();
             List<ProductDetail> itemsInfo = new List<ProductDetail>();
             foreach (Item item in items)
