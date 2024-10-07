@@ -21,25 +21,36 @@ namespace Craftera_MVC.Controllers
         [HttpPost]
         public IActionResult CheckoutWithVnPay()
         {
-            // Prepare VNPay request model
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var cart = _context.Carts.Include(c => c.Items).FirstOrDefault(c => c.UserId == userId);
+            if (cart == null || !cart.Items.Any())
+            {
+                // Handle case when cart is empty or doesn't exist
+                return RedirectToAction("Index", "Carts");
+            }
+
+            var amount = cart.TotalMoney ?? 0;
+
             var vnPayModel = new VnPaymentRequestModel
             {
-                Amount = (double)(_context.Items.Where(i => i.CartId == 2).Sum(i => i.Price) ?? 0),  // Replace with actual cart user ID or session
+                Amount = (double)amount,  // Convert to double for VNPay
                 CreatedDate = DateTime.Now,
                 Description = "Payment for Craftera accessories",
-                FullName = "User Name",  // You can get the name from logged-in user context
-                OrderId = new Random().Next(1000, 100000)  // Generate random order ID or use your logic
+                FullName = "User Name",  // Replace with the actual logged-in user's name
+                OrderId = new Random().Next(1000, 100000)
             };
 
-            // Redirect to VNPay URL
             return Redirect(_vnPayservice.CreatePaymentUrl(HttpContext, vnPayModel));
         }
-
 
         [HttpGet]
         public IActionResult VnPayPaymentCallback()
         {
-            // Process the response from VNPay
             var response = _vnPayservice.PaymentExecute(Request.Query);
 
             if (response == null || response.VnPayResponseCode != "00")
@@ -48,12 +59,16 @@ namespace Craftera_MVC.Controllers
                 return RedirectToAction("PaymentFail");
             }
 
-            // Retrieve the user's cart (user id should be dynamic)
-            var cart = _context.Carts.Include(c => c.Items).FirstOrDefault(c => c.UserId == 2);
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var cart = _context.Carts.Include(c => c.Items).FirstOrDefault(c => c.UserId == userId);
 
             if (cart != null)
             {
-                // Fetch the VNPay payment method (assuming PaymentName = "VNPay")
                 var paymentMethod = _context.Payments.FirstOrDefault(p => p.PaymentName == "VNPay");
                 if (paymentMethod == null)
                 {
@@ -61,20 +76,19 @@ namespace Craftera_MVC.Controllers
                     return RedirectToAction("PaymentFail");
                 }
 
-                // Create and save the order in the database
                 var order = new Order
                 {
                     UserId = cart.UserId,
                     OrderDate = DateTime.Now,
                     TotalMoney = cart.TotalMoney,
-                    Payment = paymentMethod,  // Assign the payment method here
-                    Status = 2 // Assuming "2" is the status for "Paid"
+                    Payment = paymentMethod,
+                    Status = 2 // Payment completed
                 };
 
                 _context.Orders.Add(order);
                 _context.SaveChanges();
 
-                // Save order details (items in the cart)
+                // Save order details
                 foreach (var item in cart.Items)
                 {
                     var orderDetail = new OrderDetail
@@ -89,9 +103,10 @@ namespace Craftera_MVC.Controllers
                 }
                 _context.SaveChanges();
 
-                // Clear the cart after successful payment
+                // Delete all items from the cart
                 _context.Items.RemoveRange(cart.Items);
-                cart.TotalMoney = 0;
+                cart.TotalMoney = 0; // Reset the total money
+                _context.Carts.Update(cart);
                 _context.SaveChanges();
 
                 TempData["Message"] = "Thanh toán VNPay thành công!";
@@ -104,8 +119,13 @@ namespace Craftera_MVC.Controllers
 
         public IActionResult Index()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
-            Cart cart = _context.Carts.Include(c => c.Items).ThenInclude(i => i.ProductDetail).FirstOrDefault(c => c.UserId == 2);
+            Cart cart = _context.Carts.Include(c => c.Items).ThenInclude(i => i.ProductDetail).FirstOrDefault(c => c.UserId == userId);
             List<Item> items = cart.Items.ToList();
             List<ProductDetail> itemsInfo = new List<ProductDetail>();
             foreach (Item item in items)
@@ -128,10 +148,15 @@ namespace Craftera_MVC.Controllers
             return View(cartViewModelClass);
         }
 
-
         [HttpPost]
         public async Task<IActionResult> AddToCartDetails(int? productId, int? materialId, int? sizeId, int? quantity)
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (productId == null || materialId == null || sizeId == null || quantity == null)
             {
                 return Json(new { success = false });
@@ -147,20 +172,19 @@ namespace Craftera_MVC.Controllers
                 }
                 else
                 {
-                    Cart cart = _context.Carts.FirstOrDefault(c => c.UserId == 2);
+                    Cart cart = _context.Carts.FirstOrDefault(c => c.UserId == userId);
                     if (cart == null)
                     {
-
                         cart = new Cart()
                         {
-                            UserId = 2,
+                            UserId = userId.Value,
                             TotalMoney = 0,
                         };
 
                         _context.Carts.Add(cart);
                         await _context.SaveChangesAsync();
 
-                        cart = _context.Carts.FirstOrDefault(c => c.UserId == 2);
+                        cart = _context.Carts.FirstOrDefault(c => c.UserId == userId);
                         Item item = new Item()
                         {
                             CartId = cart.CartId,
@@ -178,7 +202,6 @@ namespace Craftera_MVC.Controllers
                     }
                     else
                     {
-                        cart = _context.Carts.FirstOrDefault(c => c.UserId == 2);
                         Item item = _context.Items.FirstOrDefault(i => i.CartId == cart.CartId
                         && i.ProductId == productId
                         && i.SizeId == product.SizeId
@@ -207,9 +230,7 @@ namespace Craftera_MVC.Controllers
                             await _context.SaveChangesAsync();
                         }
 
-
-                        cart.TotalMoney = _context.Items.Where(i => i.CartId == cart.CartId).ToList().Sum(i => i.Price);
-
+                        cart.TotalMoney = _context.Items.Where(i => i.CartId == cart.CartId).Sum(i => i.Price);
                         _context.Carts.Update(cart);
                         await _context.SaveChangesAsync();
                         return Json(new { success = true });
@@ -218,10 +239,15 @@ namespace Craftera_MVC.Controllers
             }
         }
 
-
         [HttpPost]
         public async Task<IActionResult> AddToCart(int? productId)
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (productId == null)
             {
                 return Json(new { success = false });
@@ -235,20 +261,19 @@ namespace Craftera_MVC.Controllers
                 }
                 else
                 {
-                    Cart cart = _context.Carts.FirstOrDefault(c => c.UserId == 2);
+                    Cart cart = _context.Carts.FirstOrDefault(c => c.UserId == userId);
                     if (cart == null)
                     {
-
                         cart = new Cart()
                         {
-                            UserId = 2,
+                            UserId = userId.Value,
                             TotalMoney = 0,
                         };
 
                         _context.Carts.Add(cart);
                         await _context.SaveChangesAsync();
 
-                        cart = _context.Carts.FirstOrDefault(c => c.UserId == 2);
+                        cart = _context.Carts.FirstOrDefault(c => c.UserId == userId);
                         Item item = new Item()
                         {
                             CartId = cart.CartId,
@@ -266,7 +291,6 @@ namespace Craftera_MVC.Controllers
                     }
                     else
                     {
-                        cart = _context.Carts.FirstOrDefault(c => c.UserId == 2);
                         Item item = _context.Items.FirstOrDefault(i => i.CartId == cart.CartId
                         && i.ProductId == productId
                         && i.SizeId == product.ProductDetails.First().SizeId
@@ -283,20 +307,19 @@ namespace Craftera_MVC.Controllers
                                 Quantity = 1,
                                 Price = product.ProductDetails.First().Price,
                             };
-                            
+
                             _context.Items.Add(item);
                             await _context.SaveChangesAsync();
-                        } else
+                        }
+                        else
                         {
-                            item.Quantity += 1;
+                            item.Quantity++;
                             item.Price = product.ProductDetails.First().Price * item.Quantity;
                             _context.Items.Update(item);
                             await _context.SaveChangesAsync();
                         }
 
-                        
-                        cart.TotalMoney = _context.Items.Where(i => i.CartId == cart.CartId).ToList().Sum(i => i.Price);
-                        
+                        cart.TotalMoney = _context.Items.Where(i => i.CartId == cart.CartId).Sum(i => i.Price);
                         _context.Carts.Update(cart);
                         await _context.SaveChangesAsync();
                         return Json(new { success = true });
@@ -304,6 +327,5 @@ namespace Craftera_MVC.Controllers
                 }
             }
         }
-
     }
 }
